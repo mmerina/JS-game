@@ -1,0 +1,375 @@
+
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+		}
+		ul,li{
+			list-style:none;
+		}
+
+		.game_center,section{
+			position: relative;
+			width:800px;
+			height:600px;
+			margin:0 auto;
+			overflow: hidden;
+			background: url(../images/index_bg.png) no-repeat;
+			cursor:  url(../images/normal.png), auto;
+		}
+		section{
+			display: none;
+		}
+		.start_box{
+			display: block;
+		}
+		.start{
+			position: absolute;
+			left:530px;
+			top:210px;
+			width:167px;
+			height:89px;
+			cursor:  url(../images/point1.png), auto;
+			background: url(../images/begin_btn.png) no-repeat;
+
+		}
+		/*选角色页面*/
+		.choose_role{
+			background: url(../images/choose_role_bg.png) no-repeat;
+		}
+		.choose_role ul{
+			position: absolute;
+			left:80px;
+			width:312px;
+			height:97px;
+			border: 5px solid #e7a0c2;
+			padding:30px;
+			border-radius: 10px;
+		}
+		.choose_role ul:nth-child(1){
+			top:40px;
+		}
+		.choose_role ul:nth-child(2){
+			top:230px;
+		}
+		.choose_role ul li{
+			float: left;
+			width:48px;
+			height:85px;
+			margin-right:12px;
+			border: 3px solid transparent;
+			padding:6px 6px 0 6px;
+			text-align: center;
+			border-radius: 10px;
+		}
+		.choose_role ul li p{
+			width:48px;
+			height:60px;
+			margin-bottom:5px;
+		}
+		.choose_role ul:nth-child(1) li:nth-child(1) label p{
+			background: url(../images/fox.png) no-repeat -26px -42px;
+		}
+		.choose_role ul:nth-child(1) li:nth-child(2) label p{
+			background: url(../images/fire_boy.png) no-repeat -26px -40px;
+		}
+		.choose_role ul:nth-child(1) li:nth-child(3) label p{
+			background: url(../images/monkey.png) no-repeat -26px -40px;
+		}
+		.choose_role ul:nth-child(1) li:nth-child(4) label p{
+			background: url(../images/monster.png) no-repeat -25px -40px;
+		}
+		.choose_role ul:nth-child(2) li:nth-child(1) label p{
+			background: url(../images/normal_ball.png) no-repeat;
+		}
+		.choose_role ul:nth-child(2) li:nth-child(2) label p{
+			background: url(../images/melon_ball.png) no-repeat;
+		}
+		.choose_role ul:nth-child(2) li:nth-child(3) label p{
+			background: url(../images/orange_ball.png) no-repeat;
+		}
+		.choose_role ul:nth-child(2) li:nth-child(4) label p{
+			background: url(../images/str_ball.png) no-repeat;
+		}
+		.choose_role .next{
+			position: absolute;
+			left:440px;
+			top:400px;
+			width:30px;
+			height:30px;
+			cursor:  url(../images/point1.png), auto;
+			background-image: url(../images/next.png);
+			background-size:cover;
+		}
+		/*选地图页面*/
+		.choose_map{
+			background: url(../images/choose_map_bg.png) no-repeat;
+		}
+		.choose_map ul{
+			position: absolute;
+			left:60px;
+			top:80px;
+			width:255px;
+			height:280px;
+			padding:12px 0 0 12px;
+			border: 2px solid #36618a;
+			border-radius: 10px;
+			overflow:hidden;
+		}
+		.choose_map ul li{
+			float: left;
+			margin:0 12px 12px 0;
+			border: 3px solid transparent;
+			text-align: center;
+			border-radius: 10px;
+		}
+		.choose_map ul li p{
+			width:105px;
+			height:91px;
+			border: 2px solid #fff;
+			margin-bottom:5px;
+			background-size:cover;
+		}
+		.choose_map ul li:nth-child(1) label p{
+			background-image: url(../images/map1.png);
+		}
+		.choose_map ul li:nth-child(2) label p{
+			background-image: url(../images/map2.png);
+		}
+		.choose_map ul li:nth-child(3) label p{
+			background-image: url(../images/map3.png);
+		}
+		.choose_map ul li:nth-child(4) label p{
+			background-image: url(../images/map4.png);
+		}
+		.choose_map .prev{
+			position: absolute;
+			left:50px;
+			top:400px;
+			width:30px;
+			height:30px;
+			cursor:  url(../images/point1.png), auto;
+			background-image: url(../images/prev.png);
+			background-size:cover;
+		}
+		.choose_map .begin{
+			position: absolute;
+			left:300px;
+			top:400px;
+			width:30px;
+			height:30px;
+			cursor:  url(../images/point1.png), auto;
+			background-image: url(../images/begin.png);
+			background-size:cover;
+		}
+		/*游戏页面*/
+		section.game_play{
+			background: url("../images/game_bg.png") no-repeat; 
+		}
+		section.game_play p.game_time{
+			position: absolute;
+			left:628px;
+			top:47px;
+			width:144px;
+			height:50px;
+			padding-right:20px;
+			color:#ffee00;
+			font-size:40px;
+			line-height:50px;
+			text-align: right;
+			font-weight: bold;
+			text-shadow:#d3510f 2px 0 0,#d3510f 0 2px 0,#d3510f -2px 0 0,#d3510f 0 -2px 0;
+			-webkit-text-shadow:#d3510f 2px 0 0,#d3510f 0 2px 0,#d3510f -2px 0 0,#d3510f 0 -2px 0;
+			-moz-text-shadow:#d3510f 2px 0 0,#d3510f 0 2px 0,#d3510f -2px 0 0,#d3510f 0 -2px 0;
+		}
+		section.game_play p.creatureMax{
+			position: absolute;
+			left:689px;
+			top:235px;
+			width:24px;
+			height:16px;
+			text-align:center;
+			color:#ce466f;
+			font-size:14px;
+			line-height:16px;
+			font-weight: bold;
+			text-shadow:#fff 2px 0 0,#fff 0 2px 0,#fff -2px 0 0,#fff 0 -2px 0;
+			-webkit-text-shadow:#fff 2px 0 0,#fff 0 2px 0,#fff -2px 0 0,#fff 0 -2px 0;
+			-moz-text-shadow:#fff 2px 0 0,#fff 0 2px 0,#fff -2px 0 0,#fff 0 -2px 0;
+		}
+		section.game_play p.creatureNum{
+			position: absolute;
+			left:695px;
+			top:316px;
+			width:26px;
+			height:20px;
+			text-align:right;
+			color:#ce466f;
+			font-size:20px;
+			line-height:20px;
+			font-weight: bold;
+		}
+		section.game_play .prop_screen{
+			position: absolute;
+			left:648px;
+			top:385px;
+			width:134px;
+			height:113px;
+			overflow: hidden;
+		}
+		section.game_play .prop_screen li{
+			position: absolute;
+			width:134px;
+			height:113px;
+			display: none;
+		}
+		section.game_play .prop_screen #shoe{
+			background: url("../images/shoe_screen.png") no-repeat; 
+		}
+		section.game_play .prop_screen #addBomb{
+			background: url("../images/addBomb_screen.png") no-repeat; 
+		}
+		section.game_play .prop_screen #upBombScope{
+			background: url("../images/upBombScope_screen.png") no-repeat; 
+		}
+		section.game_play p.game_quit{
+			position: absolute;
+			left:734px;
+			top:534px;
+			width:52px;
+			height:44px;
+			cursor:  url(../images/point1.png), auto;
+		}
+		section.game_play .game_over{
+			position: absolute;
+			left:100px;
+			top:-250px;
+			width:463px;
+			height:250px;
+			z-index:999;
+			background-color: rgba(0,0,0,0.6);
+			animation:falling_down 1s ease 0s forwards;
+			display:none;
+		}
+		section.game_play .victory{
+			position: absolute;
+			left:130px;
+			top:-84px;
+			width:322px;
+			height:84px;
+			z-index:999;
+			background-image: url("../images/victory.png");			
+			animation:falling_down2 1s ease 0s forwards;
+			display:none;
+		}
+		@-webkit-keyframes falling_down{
+			100%{
+				top:150px;
+			}
+		}
+		@-webkit-keyframes falling_down2{
+			100%{
+				top:220px;
+			}
+		}
+		section.game_play .game_over::before{
+			content:"";
+			position: absolute;
+			top:50px;
+			width:463px;
+			height:108px;
+			background: url("../images/game_over.png") no-repeat; 
+		}
+		section.game_play .game_over p.once_more{
+			position: absolute;
+			bottom:10px;
+			left:100px;
+			width:60px;
+			height:60px;
+			cursor:  url(../images/point1.png), auto;
+			background: url("../images/once_more.png") no-repeat;
+			background-size: cover; 
+		}
+		section.game_play .game_over p.quit{
+			position: absolute;
+			bottom:10px;
+			right:100px;
+			width:60px;
+			height:60px;
+			cursor:  url(../images/point1.png), auto;
+			background: url("../images/quit.png") no-repeat;
+			background-size: cover; 
+		}
+		table{
+			position: absolute;
+			left:8px;
+			top:21px;
+			border-collapse: collapse;
+		}
+		td{
+			width:40px;
+			height:40px;
+		}
+		table.sand{
+			background: url("../images/sand_bg.jpg");
+		}
+		table.water{
+			background: url("../images/water_bg.png");
+		}
+		table.snow{
+			background: url("../images/snow_bg.png");
+		}
+		table.forest{
+			background: url("../images/forest_bg.png");
+		}
+		table tr td.bomb_center{
+			background: url("../images/bomb_center.png");
+		}
+		table tr td.bomb_x{
+			background: url("../images/bomb_x.png");
+		}
+		table tr td.bomb_y{
+			background: url("../images/bomb_y.png");
+		}
+		div.role{
+			position: absolute;
+			width:48px;
+			height:60px;
+		}
+		div.creature{
+			position: absolute;
+			width:48px;
+			height:60px;
+		}
+		div.moveElement,div.boomElement,div.noMove{
+			position: absolute;
+			width:40px;
+			height:60px;
+		}
+		div.shoe{
+			position: absolute;
+			width:40px;
+			height:60px;
+			background:url(../images/prop.png) no-repeat;
+			background-position: -200px 0px;
+		}
+		div.addBomb{
+			position: absolute;
+			width:40px;
+			height:60px;
+			background:url(../images/prop.png) no-repeat;
+			background-position: -100px 0px;
+		}
+		div.upBombScope{
+			position: absolute;
+			width:40px;
+			height:50px;
+			background:url(../images/prop.png) no-repeat;
+			background-position: 0px 0px;
+		}
+		div.bomb{
+			position: absolute;
+			width:40px;
+			height:50px;
+		}

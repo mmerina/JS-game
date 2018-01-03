@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<script src="js/jquery_min.js"></script>
+	<script src="js/underscore.js"></script>
+	<script src="js/json/role_json.js"></script>
+	<script src="js/Game.js"></script>
+	<script src="js/Role.js"></script>
+	<script src="js/Map.js"></script>
+	<script src="js/MoveElement.js"></script>
+	<script src="js/NoMove.js"></script>
+	<script src="js/BoomElement.js"></script>
+	<script src="js/json/map_json.js"></script>
+	<script src="js/Bomb.js"></script>
+	<script src="js/Creature.js"></script>
+	<script src="js/Prop.js"></script>
+	<script src="js/json/bomb_json.js"></script>
+</head>
+<body>
+<div class="game_center">
+	<!-- 开始画面 -->
+	<section class="start_box">
+		<p class="start"></p>
+	</section>
+	<!-- 选择角色和炸弹 -->
+	<section class="choose_role">
+	<ul>		
+		<li><label><p></p><input type="radio" name="role" value="fox"></label></li>
+		<li><label><p></p><input type="radio" name="role" value="fire_boy"></label></li>
+		<li><label><p></p><input type="radio" name="role" value="monkey"></label></li>
+		<li><label><p></p><input type="radio" name="role" value="monster"></label></li>
+	</ul>
+	<ul>		
+		<li><label><p></p><input type="radio" name="ball" value="normal_ball"></label></li>
+		<li><label><p></p><input type="radio" name="ball" value="melon_ball"></label></li>
+		<li><label><p></p><input type="radio" name="ball" value="orange_ball"></label></li>
+		<li><label><p></p><input type="radio" name="ball" value="str_ball"></label></li>
+	</ul>
+		<p class="next"></p>
+	</section>
+	<!-- 选择地图 -->
+	<section class="choose_map">
+		<ul>		
+		<li><label><p></p><input type="radio" name="map" value="map1"></label></li>
+		<li><label><p></p><input type="radio" name="map" value="map2"></label></li>
+		<li><label><p></p><input type="radio" name="map" value="map3"></label></li>
+		<li><label><p></p><input type="radio" name="map" value="map4"></label></li>
+	</ul>
+	<p class="prev"></p>
+	<p class="begin"></p>
+	</section>	
+	<section class="game_play">
+		<p class="game_time"></p>
+		<p class="creatureMax"></p>
+		<p class="creatureNum"></p>
+		<ul class="prop_screen">
+			<li id="shoe"></li>
+			<li id="addBomb"></li>
+			<li id="upBombScope"></li>
+		</ul>
+		<div class="game_over">
+		<p class="once_more"></p>
+		<p class="quit"></p>
+		</div>
+		<p class="victory"></p>
+		<p class="game_quit"></p>
+	</section>
+</div>
+<audio src="audio/desert.ogg" id="desert" loop></audio>
+<audio src="audio/water.ogg" id="water" loop></audio>
+<audio src="audio/snow.ogg" id="snow" loop></audio>
+<audio src="audio/forest.ogg" id="forest" loop></audio>
+<audio src="audio/start_screen.ogg" id="start_screen" loop autoplay></audio>
+<audio src="audio/drop_bomb.wav" id="drop_bomb"></audio>
+<audio src="audio/bomb_boom.wav" id="bomb_boom"></audio>
+<audio src="audio/pick_up.wav" id="pick_up"></audio>
+<audio src="audio/move_element.wav" id="move_element"></audio>
+<audio src="audio/ReadyGo.wav" id="ReadyGo"></audio>
+<audio src="audio/click.wav" id="click"></audio>
+<audio src="audio/goDie.wav" id="goDie"></audio>
+<audio src="audio/fail.mp3" id="fail"></audio>
+<audio src="audio/victory.mp3" id="victory"></audio>
+	<script>
+	// 主界面
+	$(".start").mousedown(function (){
+		document.getElementById("click").play();
+		$(this).css("background","url(images/begin_btn1.png) no-repeat");
+		$(this).css("cursor","url(images/point2.png), auto");
+	});
+	$(".start").mouseup(function (){
+		$(this).css("background","url(images/begin_btn.png) no-repeat");
+		$(this).css("cursor","url(images/point1.png), auto");
+		$(".choose_role").css("display","block").siblings().css("display","none");		
+
+	});
+	// 选择角色
+	$(".choose_role ul li label input[type=radio]").click(function (){
+		if($(this).is(':checked')){
+			$(this).parent().parent().css("border","3px solid gold");
+			$(this).parent().parent().siblings().css("border","3px solid transparent");
+		}
+	});
+	$(".choose_role .next").mousedown(function (){
+		document.getElementById("click").play();
+		$(this).css("background-image","url(images/next_down.png)");
+		$(this).css("cursor","url(images/point2.png), auto");
+	});
+	$(".choose_role .next").mouseup(function (){
+		$(this).css("background-image","url(images/next.png)");
+		$(this).css("cursor","url(images/point1.png), auto");
+		$(".choose_map").css("display","block").siblings().css("display","none");		
+	});
+	// 选择地图
+	$(".choose_map ul li label input[type=radio]").click(function (){
+		if($(this).is(':checked')){
+			$(this).parent().parent().css("border","3px solid gold");
+			$(this).parent().parent().siblings().css("border","3px solid transparent");
+		}
+	});
+	$(".choose_map .prev").mousedown(function (){
+		document.getElementById("click").play();
+		$(this).css("background-image","url(images/prev_down.png)");
+		$(this).css("cursor","url(images/point2.png), auto");
+	});
+	$(".choose_map .prev").mouseup(function (){
+		$(this).css("background-image","url(images/prev.png)");
+		$(this).css("cursor","url(images/point1.png), auto");
+		$(".choose_role").css("display","block").siblings().css("display","none");		
+	});
+	$(".choose_map .begin").mousedown(function (){
+		document.getElementById("click").play();
+		$(this).css("background-image","url(images/begin_down.png)");
+		$(this).css("cursor","url(images/point2.png), auto");
+	});
+	$(".choose_map .begin").mouseup(function (){
+		$(this).css("background-image","url(images/begin.png)");
+		$(this).css("cursor","url(images/point1.png), auto");
+		if(!$("input[name='role']:checked").val() || !$("input[name='ball']:checked").val() || !$("input[name='map']:checked").val()){
+			alert("请选择正确的人物炸弹和地图！");
+		}else{
+		$(".game_play").css("display","block").siblings().css("display","none");
+		document.getElementById("start_screen").pause();
+		document.getElementById("start_screen").currentTime = 0;
+		startGame($("input[name='role']:checked").val(),$("input[name='ball']:checked").val(),$("input[name='map']:checked").val());
+		}
+
+	});
+	//游戏界面
+	function startGame(id,ballType,mapName){
+		if( $("section.game_play").css("display") != 'none') {
+			var game = window.game = new Game(id,ballType,mapName);			
+		}
+	}
+	$("section.game_play .game_over p.once_more").mousedown(function (){
+		document.getElementById("click").play();
+		$(this).css("cursor","url(images/point2.png), auto");
+	});
+	$("section.game_play .game_over p.once_more").mouseup(function (){
+		$(this).css("cursor","url(images/point1.png), auto");
+		$(game.table).remove();
+		$("section.game_play .game_over").css("display","none");
+		$("section.game_play .prop_screen li").css("display","none");
+		document.getElementById("fail").pause();
+		document.getElementById("fail").currentTime = 0;
+		game = window.game = new Game($("input[name='role']:checked").val(),$("input[name='ball']:checked").val(),$("input[name='map']:checked").val());
+	});
+	$("section.game_play .game_over p.quit").mousedown(function (){
+		document.getElementById("click").play();
+		$(this).css("cursor","url(images/point2.png), auto");
+	});
+	$("section.game_play .game_over p.quit").mouseup(function (){
+		$(game.table).remove();
+		$(this).css("cursor","url(images/point1.png), auto");
+		$("section.game_play .game_over").css("display","none");
+		$(".start_box").css("display","block").siblings().css("display","none");
+		document.getElementById("fail").pause();
+		document.getElementById("fail").currentTime = 0;
+		document.getElementById("start_screen").play();
+	});	
+	$("section.game_play p.game_quit").mousedown(function (){
+		document.getElementById("click").play();
+		$(this).css("cursor","url(images/point2.png), auto");
+	});
+	function returnChooseMap(){
+		$(game.table).remove();
+		$(".choose_map").css("display","block").siblings().css("display","none");
+		document.getElementById("start_screen").play();
+	}
+	$("section.game_play p.game_quit").mouseup(function (){
+		game.role.isDie = true;
+		clearInterval(game.timer);
+		document.getElementById(game.map.mapType["music_id"]).pause();
+		document.getElementById(game.map.mapType["music_id"]).currentTime = 0;
+		$(this).css("cursor","url(images/point1.png), auto");
+		returnChooseMap();
+	});	
+	
+	</script>
+</body>
+</html>
